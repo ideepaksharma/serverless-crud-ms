@@ -1,0 +1,619 @@
+{
+  "C:\\learnings\\AWS\\serverless-crud-ms": {
+    "versionSfCore": null,
+    "versionFramework": "4.4.18",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeResolverProviders": {
+      "opt": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "service": "serverless-crud-ms",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs18.x",
+              "stage": "dev",
+              "region": "eu-central-1",
+              "environment": {
+                "DYNAMODB_TABLE": "serverless-crud-ms-dev"
+              },
+              "iamRoleStatements": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Query",
+                    "dynamodb:Scan",
+                    "dynamodb:GetItem",
+                    "dynamodb:PutItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:DeleteItem"
+                  ],
+                  "Resource": "arn:aws:dynamodb:eu-central-1:*:table/serverless-crud-ms-dev"
+                }
+              ],
+              "versionFunctions": true
+            },
+            "functions": {
+              "create": {
+                "handler": "handlers/create.create",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items",
+                      "method": "post",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-create"
+              },
+              "getAll": {
+                "handler": "handlers/get.getAll",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items",
+                      "method": "get",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-getAll"
+              },
+              "getOne": {
+                "handler": "handlers/get.getOne",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "get",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-getOne"
+              },
+              "update": {
+                "handler": "handlers/update.update",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "put",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-update"
+              },
+              "delete": {
+                "handler": "handlers/delete.delete",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "delete",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-delete"
+              }
+            },
+            "resources": {
+              "Resources": {
+                "ItemsTable": {
+                  "Type": "AWS::DynamoDB::Table",
+                  "Properties": {
+                    "TableName": "serverless-crud-ms-dev",
+                    "AttributeDefinitions": [
+                      {
+                        "AttributeName": "id",
+                        "AttributeType": "S"
+                      }
+                    ],
+                    "KeySchema": [
+                      {
+                        "AttributeName": "id",
+                        "KeyType": "HASH"
+                      }
+                    ],
+                    "BillingMode": "PAY_PER_REQUEST"
+                  }
+                }
+              }
+            }
+          },
+          "configFileDirPath": "C:\\learnings\\AWS\\serverless-crud-ms",
+          "config": {
+            "type": "opt"
+          },
+          "options": {},
+          "logger": {
+            "namespace": "s:core:resolver:opt",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      },
+      "default-aws-credential-resolver": "<REDACTED>",
+      "self": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "service": "serverless-crud-ms",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs18.x",
+              "stage": "dev",
+              "region": "eu-central-1",
+              "environment": {
+                "DYNAMODB_TABLE": "serverless-crud-ms-dev"
+              },
+              "iamRoleStatements": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Query",
+                    "dynamodb:Scan",
+                    "dynamodb:GetItem",
+                    "dynamodb:PutItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:DeleteItem"
+                  ],
+                  "Resource": "arn:aws:dynamodb:eu-central-1:*:table/serverless-crud-ms-dev"
+                }
+              ],
+              "versionFunctions": true
+            },
+            "functions": {
+              "create": {
+                "handler": "handlers/create.create",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items",
+                      "method": "post",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-create"
+              },
+              "getAll": {
+                "handler": "handlers/get.getAll",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items",
+                      "method": "get",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-getAll"
+              },
+              "getOne": {
+                "handler": "handlers/get.getOne",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "get",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-getOne"
+              },
+              "update": {
+                "handler": "handlers/update.update",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "put",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-update"
+              },
+              "delete": {
+                "handler": "handlers/delete.delete",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "delete",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-delete"
+              }
+            },
+            "resources": {
+              "Resources": {
+                "ItemsTable": {
+                  "Type": "AWS::DynamoDB::Table",
+                  "Properties": {
+                    "TableName": "serverless-crud-ms-dev",
+                    "AttributeDefinitions": [
+                      {
+                        "AttributeName": "id",
+                        "AttributeType": "S"
+                      }
+                    ],
+                    "KeySchema": [
+                      {
+                        "AttributeName": "id",
+                        "KeyType": "HASH"
+                      }
+                    ],
+                    "BillingMode": "PAY_PER_REQUEST"
+                  }
+                }
+              }
+            }
+          },
+          "configFileDirPath": "C:\\learnings\\AWS\\serverless-crud-ms",
+          "config": {
+            "type": "self"
+          },
+          "options": {},
+          "stage": "dev",
+          "dashboard": null,
+          "logger": {
+            "namespace": "s:core:resolver:self",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      },
+      "sls": {
+        "instance": {
+          "credentials": "<REDACTED>",
+          "serviceConfigFile": {
+            "service": "serverless-crud-ms",
+            "provider": {
+              "name": "aws",
+              "runtime": "nodejs18.x",
+              "stage": "dev",
+              "region": "eu-central-1",
+              "environment": {
+                "DYNAMODB_TABLE": "serverless-crud-ms-dev"
+              },
+              "iamRoleStatements": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Query",
+                    "dynamodb:Scan",
+                    "dynamodb:GetItem",
+                    "dynamodb:PutItem",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:DeleteItem"
+                  ],
+                  "Resource": "arn:aws:dynamodb:eu-central-1:*:table/serverless-crud-ms-dev"
+                }
+              ],
+              "versionFunctions": true
+            },
+            "functions": {
+              "create": {
+                "handler": "handlers/create.create",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items",
+                      "method": "post",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-create"
+              },
+              "getAll": {
+                "handler": "handlers/get.getAll",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items",
+                      "method": "get",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-getAll"
+              },
+              "getOne": {
+                "handler": "handlers/get.getOne",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "get",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-getOne"
+              },
+              "update": {
+                "handler": "handlers/update.update",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "put",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-update"
+              },
+              "delete": {
+                "handler": "handlers/delete.delete",
+                "events": [
+                  {
+                    "http": {
+                      "path": "items/{id}",
+                      "method": "delete",
+                      "cors": true
+                    }
+                  }
+                ],
+                "name": "serverless-crud-ms-dev-delete"
+              }
+            },
+            "resources": {
+              "Resources": {
+                "ItemsTable": {
+                  "Type": "AWS::DynamoDB::Table",
+                  "Properties": {
+                    "TableName": "serverless-crud-ms-dev",
+                    "AttributeDefinitions": [
+                      {
+                        "AttributeName": "id",
+                        "AttributeType": "S"
+                      }
+                    ],
+                    "KeySchema": [
+                      {
+                        "AttributeName": "id",
+                        "KeyType": "HASH"
+                      }
+                    ],
+                    "BillingMode": "PAY_PER_REQUEST"
+                  }
+                }
+              }
+            }
+          },
+          "configFileDirPath": "C:\\learnings\\AWS\\serverless-crud-ms",
+          "config": {
+            "type": "sls"
+          },
+          "options": {},
+          "stage": "dev",
+          "dashboard": null,
+          "logger": {
+            "namespace": "s:core:resolver:sls",
+            "prefix": null,
+            "prefixColor": null
+          },
+          "_credentialsPromise": "<REDACTED>"
+        },
+        "resolvers": {}
+      }
+    },
+    "composeServiceName": null,
+    "servicePath": "C:\\learnings\\AWS\\serverless-crud-ms",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "serverless-crud-ms",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "stage": "dev",
+        "region": "eu-central-1",
+        "environment": {
+          "DYNAMODB_TABLE": "serverless-crud-ms-dev"
+        },
+        "iamRoleStatements": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "dynamodb:Query",
+              "dynamodb:Scan",
+              "dynamodb:GetItem",
+              "dynamodb:PutItem",
+              "dynamodb:UpdateItem",
+              "dynamodb:DeleteItem"
+            ],
+            "Resource": "arn:aws:dynamodb:eu-central-1:*:table/serverless-crud-ms-dev"
+          }
+        ],
+        "versionFunctions": true
+      },
+      "functions": {
+        "create": {
+          "handler": "handlers/create.create",
+          "events": [
+            {
+              "http": {
+                "path": "items",
+                "method": "post",
+                "cors": true
+              }
+            }
+          ],
+          "name": "serverless-crud-ms-dev-create"
+        },
+        "getAll": {
+          "handler": "handlers/get.getAll",
+          "events": [
+            {
+              "http": {
+                "path": "items",
+                "method": "get",
+                "cors": true
+              }
+            }
+          ],
+          "name": "serverless-crud-ms-dev-getAll"
+        },
+        "getOne": {
+          "handler": "handlers/get.getOne",
+          "events": [
+            {
+              "http": {
+                "path": "items/{id}",
+                "method": "get",
+                "cors": true
+              }
+            }
+          ],
+          "name": "serverless-crud-ms-dev-getOne"
+        },
+        "update": {
+          "handler": "handlers/update.update",
+          "events": [
+            {
+              "http": {
+                "path": "items/{id}",
+                "method": "put",
+                "cors": true
+              }
+            }
+          ],
+          "name": "serverless-crud-ms-dev-update"
+        },
+        "delete": {
+          "handler": "handlers/delete.delete",
+          "events": [
+            {
+              "http": {
+                "path": "items/{id}",
+                "method": "delete",
+                "cors": true
+              }
+            }
+          ],
+          "name": "serverless-crud-ms-dev-delete"
+        }
+      },
+      "resources": {
+        "Resources": {
+          "ItemsTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "serverless-crud-ms-dev",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "BillingMode": "PAY_PER_REQUEST"
+            }
+          }
+        }
+      }
+    },
+    "serviceRawFile": "service: serverless-crud-ms\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs18.x\r\n  stage: ${opt:stage, 'dev'}\r\n  region: eu-central-1\r\n  environment:\r\n    DYNAMODB_TABLE: ${self:service}-${self:provider.stage}\r\n  iamRoleStatements:\r\n    - Effect: Allow\r\n      Action:\r\n        - dynamodb:Query\r\n        - dynamodb:Scan\r\n        - dynamodb:GetItem\r\n        - dynamodb:PutItem\r\n        - dynamodb:UpdateItem\r\n        - dynamodb:DeleteItem\r\n      Resource: \"arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}\"\r\n\r\nfunctions:\r\n  create:\r\n    handler: handlers/create.create\r\n    events:\r\n      - http:\r\n          path: items\r\n          method: post\r\n          cors: true\r\n\r\n  getAll:\r\n    handler: handlers/get.getAll\r\n    events:\r\n      - http:\r\n          path: items\r\n          method: get\r\n          cors: true\r\n\r\n  getOne:\r\n    handler: handlers/get.getOne\r\n    events:\r\n      - http:\r\n          path: items/{id}\r\n          method: get\r\n          cors: true\r\n\r\n  update:\r\n    handler: handlers/update.update\r\n    events:\r\n      - http:\r\n          path: items/{id}\r\n          method: put\r\n          cors: true\r\n\r\n  delete:\r\n    handler: handlers/delete.delete\r\n    events:\r\n      - http:\r\n          path: items/{id}\r\n          method: delete\r\n          cors: true\r\n\r\nresources:\r\n  Resources:\r\n    ItemsTable:\r\n      Type: AWS::DynamoDB::Table\r\n      Properties:\r\n        TableName: ${self:provider.environment.DYNAMODB_TABLE}\r\n        AttributeDefinitions:\r\n          - AttributeName: id\r\n            AttributeType: S\r\n        KeySchema:\r\n          - AttributeName: id\r\n            KeyType: HASH\r\n        BillingMode: PAY_PER_REQUEST\r\n",
+    "command": [
+      "remove"
+    ],
+    "options": {},
+    "error": null,
+    "params": {},
+    "machineId": "10d51cae38bd01a89f41cfcd368be7fe",
+    "stage": "dev",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "30a3b014-4ebe-4a3b-aad0-8fded1073955",
+    "orgName": "amdocs",
+    "userId": "1xrmr6ksjYs1bZvWSk",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": false,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "amdocs",
+    "subscription": null,
+    "userEmail": "deepak_sharma_25@yahoo.co.in",
+    "serviceProviderAwsRegion": "eu-central-1",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "075122532278",
+    "projectType": "traditional",
+    "versionSf": "4.4.18",
+    "serviceProviderAwsCfStackName": "serverless-crud-ms-dev",
+    "serviceUniqueId": "arn:aws:cloudformation:eu-central-1:075122532278:stack/serverless-crud-ms-dev/e1daeec0-c528-11ef-9b2b-022666730a75",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:eu-central-1:075122532278:stack/serverless-crud-ms-dev/e1daeec0-c528-11ef-9b2b-022666730a75",
+    "serviceProviderAwsCfStackCreated": "2024-12-28T14:34:45.432Z",
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": "CREATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "GetOneLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:075122532278:function:serverless-crud-ms-dev-getOne:1",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-serverless-crud-ms-dev-GetOneLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "GetAllLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:075122532278:function:serverless-crud-ms-dev-getAll:1",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-serverless-crud-ms-dev-GetAllLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "DeleteLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:075122532278:function:serverless-crud-ms-dev-delete:1",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-serverless-crud-ms-dev-DeleteLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "CreateLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:075122532278:function:serverless-crud-ms-dev-create:1",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-serverless-crud-ms-dev-CreateLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "UpdateLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:eu-central-1:075122532278:function:serverless-crud-ms-dev-update:1",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-serverless-crud-ms-dev-UpdateLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "ServiceEndpoint",
+        "OutputValue": "https://z4lr5ouft0.execute-api.eu-central-1.amazonaws.com/dev",
+        "Description": "URL of the service endpoint",
+        "ExportName": "sls-serverless-crud-ms-dev-ServiceEndpoint"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "serverless-framework-deployments-eu-central-1-ce29096d-9361",
+        "ExportName": "sls-serverless-crud-ms-dev-ServerlessDeploymentBucketName"
+      }
+    ],
+    "integrations": {}
+  }
+}
